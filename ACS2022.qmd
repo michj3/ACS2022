@@ -23,7 +23,7 @@ In order to obtain data for the 2022 American Community Survey:
 -   After selecting the desired variables, click "View cart" and then click "create data extract".
 -   Once satisfied with the dimensions of the data click "submit extract" and wait for your data to finish downloading.
 
-The data can be obtained at IPUMS USA, [here](https://usa.ipums.org/usa/). We will use ACS 2022 data from IPUMS (CITE) to estimate total respondents for each state. 
+The data can be obtained at IPUMS USA, [here](https://usa.ipums.org/usa/). We will use ACS 2022 data from IPUMS [@data] to estimate total respondents for each state. 
 
 ## Ratio Estimators Approach 
 
@@ -77,4 +77,9 @@ estimated_total |>
 
 ## Potential Reasons for Variance 
 As we are assuming that every state has the same proportion of respondents with doctoral degrees as California (a random state), we are ignoring the demographic variation between different states. Some states may have a higher average income level and therefore, higher levels of educational attainment. California could have more or less popular universities for doctoral degrees compared to other states; therefore, there might be a disproportional number of doctoral degree holders in California due to this external factor. By sampling a random state (California), we are introducing sampling bias because certain types of people that live in California might disproportionally exhibit certain characteristics. Since we are selecting just 1 state for simplicity and ease, we are also introducing selection bias and convenience bias. One state is an unreasonably small sample size to represent all 50 U.S. states accurately.
+
+\newpage
+
+
+# References
 
