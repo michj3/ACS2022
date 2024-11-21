@@ -1,8 +1,10 @@
 ---
 title: ACS2022
 author: Fatima Yunusa, Michelle Ji, Jiaqi Lai, Lexi Knight, and Aliza Mithwani
-date: 3 October 2024
+date: today
+date-format: long
 format: pdf
+bibliography: references.bib
 
 ---
 
@@ -21,7 +23,7 @@ In order to obtain data for the 2022 American Community Survey:
 -   After selecting the desired variables, click "View cart" and then click "create data extract".
 -   Once satisfied with the dimensions of the data click "submit extract" and wait for your data to finish downloading.
 
-The data can be obtained at IPUMS USA, [here](https://usa.ipums.org/usa/)
+The data can be obtained at IPUMS USA, [here](https://usa.ipums.org/usa/). We will use ACS 2022 data from IPUMS (CITE) to estimate total respondents for each state. 
 
 ## Ratio Estimators Approach 
 
@@ -36,7 +38,7 @@ The calculated Laplace ratio is around 0.01619. We used this to estimate the tot
 #install.packages("knitr")
 library(knitr)
 library(tidyverse)
-data <- read_csv("~/Downloads/usa_00001.csv")
+data <- read_csv("~/Downloads/usa_00001.csv.gz")
 
 doctoral_counts <- data |>
   filter(EDUCD == 116) |>
@@ -54,7 +56,9 @@ california_total_respondents <- 391171
 ca_ratio <- california_phd_count/california_total_respondents
 
 estimated_total <- doctoral_counts |>
-  mutate(estimated_total_respondents = doctoral_respondents/ca_ratio) |>
+  mutate(
+    estimated_total_respondents = round(doctoral_respondents / ca_ratio, 2)
+  ) |>
   as_tibble()
 
 doctoral_counts |>
